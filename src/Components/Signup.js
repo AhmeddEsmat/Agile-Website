@@ -21,7 +21,7 @@ const Signup = () => {
   function handleSignup(e) {
     alert("Hello");
     axios
-      .post("https://agile-server.onrender.com/signup", {
+      .post("https://agile-server.onrender.com/registration", {
         firstName: firstNameRef.current.value,
         lastName: lastNameRef.current.value,
         email: emailRef.current.value,
