@@ -30,7 +30,8 @@ const Login = () => {
   return (
     <div className="login">
       <Form className="login-form" onSubmit={handleLogin}>
-        <h1>Login</h1>
+        <h2>عalegny Shokran</h2>
+        <h3>Login</h3>
         <Form.Group className="mb-3" controlId="formBasicEmail">
           <Form.Control
             type="email"

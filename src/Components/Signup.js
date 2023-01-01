@@ -3,8 +3,13 @@ import { Button, Form, Alert } from "react-bootstrap";
 import { useHistory, Link } from "react-router-dom";
 import { useState, useRef } from "react";
 import { useAuth } from "../Contexts/AuthContext";
+import Dropdown from "react-bootstrap/Dropdown";
+import DropdownButton from "react-bootstrap/DropdownButton";
+import axios from "axios";
 
 const Signup = () => {
+  const firstNameRef = useRef();
+  const lastNameRef = useRef();
   const emailRef = useRef();
   const passwordRef = useRef();
   const passwordConfirmRef = useRef();
@@ -13,31 +18,65 @@ const Signup = () => {
   const [loading, setLoading] = useState(false);
   const history = useHistory();
 
-  async function handleSignup(e) {
-    e.preventDefault();
+  function handleSignup(e) {
+    alert("Hello");
+    axios
+      .post("http://localhost:3000/signup", {
+        firstName: firstNameRef.current.value,
+        lastName: lastNameRef.current.value,
+        email: emailRef.current.value,
+        password: passwordRef.current.value,
+        passwordConfirm: passwordConfirmRef.current.value,
+      })
+      .then((response) => {
+        console.log(response);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+    alert("Signup successful");
 
-    if (passwordRef.current.value !== passwordConfirmRef.current.value) {
-      return setError("Passwords do not match");
-    }
+    // e.preventDefault();
 
-    try {
-      setError("");
-      setLoading(true);
-      await signup(emailRef.current.value, passwordRef.current.value);
-      history.push("/");
-    } catch {
-      setError("Failed to create an account");
-    }
+    // if (passwordRef.current.value !== passwordConfirmRef.current.value) {
+    //   return setError("Passwords do not match");
+    // }
+
+    // try {
+    //   setError("");
+    //   setLoading(true);
+    //   await signup(emailRef.current.value, passwordRef.current.value);
+    //   history.push("/");
+    // } catch {
+    //   setError("Failed to create an account");
+    // }
 
     setLoading(false);
   }
 
   return (
     <div className="signup">
-      <Form className="signup-form" onSubmit={handleSignup}>
-        <h1>Sign Up</h1>
+      <Form className="signup-form">
+        <h2>عalegny Shokran</h2>
+        <h3>Sign Up</h3>
         {error && <Alert variant="danger">{error}</Alert>}
         <Form.Group className="mb-3" controlId="formBasicEmail">
+          <Form.Control
+            type="text"
+            placeholder="Enter first name"
+            ref={firstNameRef}
+            required
+          />
+          <Form.Control
+            type="text"
+            placeholder="Enter last name"
+            ref={lastNameRef}
+            required
+          />
+          {/* <Form.Select>
+            <option>Doctor</option>
+            <option>Patient</option>
+          </Form.Select> */}
           <Form.Control
             type="email"
             placeholder="Enter email"
@@ -56,7 +95,7 @@ const Signup = () => {
             ref={passwordConfirmRef}
             required
           />
-          <Button disabled={loading} variant="primary" type="submit">
+          <Button disabled={loading} variant="primary" onClick={handleSignup}>
             Sign Up
           </Button>
         </Form.Group>

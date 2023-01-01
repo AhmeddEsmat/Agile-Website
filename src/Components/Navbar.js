@@ -1,23 +1,30 @@
-import Container from 'react-bootstrap/Container';
-import Nav from 'react-bootstrap/Nav';
-import Navbar from 'react-bootstrap/Navbar';
-import './Navbar.css';
+import Container from "react-bootstrap/Container";
+import Nav from "react-bootstrap/Nav";
+import Navbar from "react-bootstrap/Navbar";
+import { Link } from "react-router-dom";
+import "./Navbar.css";
 
 const Navigation = () => {
   return (
     <>
-      <Navbar bg="light" variant="light">
-        <Container className='navbar'>
+      <Navbar className="navbar-container">
+        <Container className="navbar">
           <Navbar.Brand href="#home">عalegny Shokran</Navbar.Brand>
           <Nav className="nav">
-            <Nav.Link href="#home">Home</Nav.Link>
-            <Nav.Link href="#features">Services</Nav.Link>
-            <Nav.Link href="#pricing">Pricing</Nav.Link>
+            <Link to="/">
+              <Nav.Link href="#home">Home</Nav.Link>
+            </Link>
+            <Link to="/services">
+              <Nav.Link href="#features">Medicines</Nav.Link>
+            </Link>
+            <Link to="/donate">
+              <Nav.Link href="#pricing">Donate</Nav.Link>
+            </Link>
           </Nav>
         </Container>
       </Navbar>
     </>
   );
-}
+};
 
 export default Navigation;

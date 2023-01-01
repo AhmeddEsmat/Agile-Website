@@ -1,0 +1,13 @@
+.creditCard {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+.creditCard h1 {
+    margin-bottom: 20px;
+}
+.creditCard input {
+    margin-bottom: 15px;
+    width: 210px;
+}

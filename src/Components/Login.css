@@ -11,7 +11,17 @@
     border-radius: 20px;
     padding: 20px;
 }
+.login h3 {
+    margin-bottom: 20px;
+}
 .login input, .login button {
     margin: 10px;
     width: 210px;
+}
+.login button {
+    background-color: rgb(70, 152, 161);
+    color: white;
+}
+.login button:hover {
+    background-color: #e0501b;
 }

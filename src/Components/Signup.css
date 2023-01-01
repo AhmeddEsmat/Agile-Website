@@ -10,8 +10,16 @@
     border: 1px solid black;
     border-radius: 20px;
     padding: 20px;
+    width: 500px !important;
 }
 .signup input, .signup button {
-    margin: 10px;
-    width: 210px;
+    margin: 10px 0;
+    width: 100% !important;
+}
+.signup button {
+    background-color: rgb(70, 152, 161);
+    color: white;
+}
+.signup button:hover {
+    background-color: #e0501b;
 }

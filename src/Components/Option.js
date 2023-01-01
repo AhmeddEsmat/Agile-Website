@@ -1,26 +1,64 @@
-import './Option.css'
+import "./Option.css";
+import Card from "react-bootstrap/Card";
+import { Link } from "react-router-dom";
+
+const medicalServices = [
+  {
+    serviceName: "Dental",
+    serviceImage:
+      "https://metropolitanhost.com/themes/themeforest/react/docfind/assets/img/home-1/300x240-0.jpg",
+    serviceDesc:
+      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod.",
+  },
+  {
+    serviceName: "Mental Health Care",
+    serviceImage:
+      "https://metropolitanhost.com/themes/themeforest/react/docfind/assets/img/home-1/300x240.jpg",
+    serviceDesc:
+      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod.",
+  },
+  {
+    serviceName: "Eye Care",
+    serviceImage:
+      "https://images.unsplash.com/photo-1618498082410-b4aa22193b38?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1170&q=80",
+    serviceDesc:
+      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod.",
+  },
+  {
+    serviceName: "Medical Supplies",
+    serviceImage:
+      "https://images.pexels.com/photos/7722927/pexels-photo-7722927.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
+    serviceDesc:
+      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod.",
+    url: "services",
+  },
+];
 
 const Option = () => {
-    return(
-        <div className='container'>
-            <div className='card'>
-                <img src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSUZ7P6-JVEm_eT-xJyQlJunq5c_vqzIQ7cYsZ8NfD3oDn5iACFImiOf2vp-RGdMS7hVPs&usqp=CAU' />
-                <p>Doctors</p>
-            </div>
-            <div className='card'>
-                <img src='https://www.sunwaymedical.com/images/uploads/page/SUN_general-medicine-use-storage.png' />
-                <p>Medicines</p>
-            </div>
-            <div className='card'>
-                <img src='https://img.freepik.com/free-vector/medical-treatment-tools-composition_1284-16379.jpg?w=2000' />
-                <p>Medical Supplies</p>
-            </div>
-            <div className='card'>
-                <img src='https://i.pinimg.com/736x/f5/cc/6a/f5cc6ae8617305a3075745f621fe8cd1.jpg' />
-                <p>Medical Tests <br/> and Analysis</p>
-            </div>
-        </div>
-    );
-}
+  return (
+    <>
+      <h1 className="text-center py-5 fw-bold">
+        Our <span className="text-info">Services</span>
+      </h1>
+      <div className="services-container">
+        {medicalServices.map((item) => (
+          <Card className="shadow-effect">
+            <Card.Img variant="top" src={item.serviceImage} />
+            <Card.Body>
+              <Card.Title className="fw-bold">{item.serviceName}</Card.Title>
+              <Card.Text className="text">{item.serviceDesc}</Card.Text>
+              <Link
+                to={`/${item.url}`}
+                className="btn btn-info text-white fw-bold"
+              >
+                Click For Details
+              </Link>
+            </Card.Body>
+          </Card>
+        ))}
+      </div>
+    </>
+  );
+};
 
 export default Option;

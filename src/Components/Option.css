@@ -1,9 +1,19 @@
-.container {
+.services-container {
     display: flex;
     justify-content: space-evenly;
     align-items: center;
     text-align: center;
+    border: 0;
+    margin: auto 27px;
 }
-img {
-    width: 150px;
+.card {
+    border: 1px solid gray !important;
+    text-align: center !important;
+    margin: auto 10px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+.card img {
+    width: 45vh;
+    /* height: 150px;
+    border-radius: 50%; */
 }
