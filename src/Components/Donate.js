@@ -20,6 +20,11 @@ const Donate = () => {
             Fawry
           </Button>
         </Link>
+        <Link to="/items">
+          <Button variant="primary" type="submit">
+            Items
+          </Button>
+        </Link>
       </div>
       <Footer />
     </>

@@ -88,12 +88,12 @@ const Signup = () => {
             ref={passwordRef}
             required
           />
-          <Form.Control
+          {/* <Form.Control
             type="password"
             placeholder="Enter password again"
             ref={passwordConfirmRef}
             required
-          />
+          /> */}
           <Button disabled={loading} variant="primary" onClick={handleSignup}>
             Sign Up
           </Button>

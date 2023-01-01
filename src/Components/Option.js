@@ -8,28 +8,31 @@ const medicalServices = [
     serviceImage:
       "https://metropolitanhost.com/themes/themeforest/react/docfind/assets/img/home-1/300x240-0.jpg",
     serviceDesc:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod.",
+      "Check our best dentists.",
+    url: "dental",
   },
   {
     serviceName: "Mental Health Care",
     serviceImage:
       "https://metropolitanhost.com/themes/themeforest/react/docfind/assets/img/home-1/300x240.jpg",
     serviceDesc:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod.",
+      "Check our mental health care doctors.",
+    url: "mental",
   },
   {
     serviceName: "Eye Care",
     serviceImage:
       "https://images.unsplash.com/photo-1618498082410-b4aa22193b38?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1170&q=80",
     serviceDesc:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod.",
+      "Check the best eye doctors out there.",
+    url: "eye",
   },
   {
     serviceName: "Medical Supplies",
     serviceImage:
       "https://images.pexels.com/photos/7722927/pexels-photo-7722927.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
     serviceDesc:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod.",
+      "Check medical supplies page.",
     url: "services",
   },
 ];

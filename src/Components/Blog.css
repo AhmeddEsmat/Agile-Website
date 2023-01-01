@@ -1,0 +1,15 @@
+.blog {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+    width: 90%;
+    height: 100%;
+    padding: 0 10px;
+    text-align: justify;
+}
+.blog img {
+    margin: 15px auto;
+    width: 50%;
+}

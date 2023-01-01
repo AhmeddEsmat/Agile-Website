@@ -3,6 +3,7 @@ import { useRef, useState } from "react";
 import { Button, Form } from "react-bootstrap";
 import { Link, useHistory } from "react-router-dom";
 import { useAuth } from "../Contexts/AuthContext";
+import axios from "axios";
 
 const Login = () => {
   const emailRef = useRef();
@@ -12,18 +13,22 @@ const Login = () => {
   const [loading, setLoading] = useState(false);
   const history = useHistory();
 
-  function handleLogin(e) {
-    // e.preventDefault();
-
-    // try {
-    //   setError("");
-    //   setLoading(true);
-    //   await login(emailRef.current.value, passwordRef.current.value);
-    //   history.push("/");
-    // } catch {
-    //   setError("Failed to log in");
-    // }
-
+  async function handleLogin(e) {
+    e.preventDefault();
+  
+    try {
+      setError("");
+      setLoading(true);
+      const response = await axios.post("https://agile-server.onrender.com/getUser", {
+        email: emailRef.current.value,
+        password: passwordRef.current.value
+      });
+      login(response.data.token, response.data.user);
+      history.push("/");
+    } catch {
+      setError("Failed to log in");
+    }
+  
     setLoading(false);
   }
 

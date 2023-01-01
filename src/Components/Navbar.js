@@ -20,6 +20,9 @@ const Navigation = () => {
             <Link to="/donate">
               <Nav.Link href="#pricing">Donate</Nav.Link>
             </Link>
+            <Link to="/about">
+              <Nav.Link href="#pricing">About</Nav.Link>
+            </Link>
           </Nav>
         </Container>
       </Navbar>
