@@ -19,7 +19,7 @@ const Signup = () => {
   const history = useHistory();
 
   function handleSignup(e) {
-    alert("Hello");
+    // alert("Hello");
     axios
       .post("https://agile-server.onrender.com/registration", {
         firstName: firstNameRef.current.value,
@@ -33,7 +33,7 @@ const Signup = () => {
       .catch((error) => {
         console.log(error);
       });
-    alert("Signup successful");
+    // alert("Signup successful");
 
     // e.preventDefault();
 

@@ -12,17 +12,35 @@ const Login = () => {
   const [loading, setLoading] = useState(false);
   const history = useHistory();
 
-  async function handleLogin(e) {
-    e.preventDefault();
+  function handleLogin(e) {
+    // Send a POST request to the server with the email and password
+    axios
+      .post("/login", {
+        email: email,
+        password: password,
+      })
+      .then((response) => {
+        // If the login was successful, store the user's information in local storage
+        localStorage.setItem("user", JSON.stringify(response.data.user));
+        // Redirect the user to the dashboard
+        this.props.history.push("/");
+      })
+      .catch((error) => {
+        // If there was an error, display an error message
+        this.setState({
+          error: "Invalid email or password",
+        });
+      });
+    // e.preventDefault();
 
-    try {
-      setError("");
-      setLoading(true);
-      await login(emailRef.current.value, passwordRef.current.value);
-      history.push("/");
-    } catch {
-      setError("Failed to log in");
-    }
+    // try {
+    //   setError("");
+    //   setLoading(true);
+    //   await login(emailRef.current.value, passwordRef.current.value);
+    //   history.push("/");
+    // } catch {
+    //   setError("Failed to log in");
+    // }
 
     setLoading(false);
   }
