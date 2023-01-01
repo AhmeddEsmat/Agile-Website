@@ -26,7 +26,6 @@ const Signup = () => {
         lastName: lastNameRef.current.value,
         email: emailRef.current.value,
         password: passwordRef.current.value,
-        passwordConfirm: passwordConfirmRef.current.value,
       })
       .then((response) => {
         console.log(response);
