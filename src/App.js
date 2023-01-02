@@ -33,8 +33,8 @@ function App() {
       const response = await axios.post(
         "https://agile-server.onrender.com/getUser",
         {
-          email,
-          password,
+          email: email,
+          password: password,
         }
       );
       // If the login is successful, update the login status and redirect the user to the home page
@@ -49,7 +49,7 @@ function App() {
       console.error(error);
     }
   };
-  
+
   return (
     <div>
       <Router>
