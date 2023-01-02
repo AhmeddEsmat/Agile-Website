@@ -15,6 +15,7 @@ import {
   BrowserRouter as Router,
   Switch,
   Route,
+  Routes,
   BrowserRouter,
   Redirect,
 } from "react-router-dom";

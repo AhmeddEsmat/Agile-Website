@@ -1,8 +1,7 @@
 import "./Login.css";
 import { useRef, useState } from "react";
 import { Button, Form } from "react-bootstrap";
-import { Link, useHistory } from "react-router-dom";
-// import { useAuth } from "../Contexts/AuthContext";
+import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 
 const Login = () => {
