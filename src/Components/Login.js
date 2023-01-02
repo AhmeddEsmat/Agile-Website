@@ -5,17 +5,18 @@ import { Link, useHistory } from "react-router-dom";
 // import { useAuth } from "../Contexts/AuthContext";
 import axios from "axios";
 
-const Login = ({handleLogin}) => {
+const Login = () => {
   const emailRef = useRef();
   const passwordRef = useRef();
-  // const { login } = useAuth();
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
-  const history = useHistory();
+  const navigate = useNavigate();
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
   // async function handleLogin(e) {
   //   e.preventDefault();
-  
+
   //   try {
   //     setError("");
   //     setLoading(true);
@@ -28,7 +29,7 @@ const Login = ({handleLogin}) => {
   //   } catch {
   //     setError("Failed to log in");
   //   }
-  
+
   //   setLoading(false);
   // }
 
@@ -42,40 +43,56 @@ const Login = ({handleLogin}) => {
   //       password: passwordRef.current.value
   //     });
   //     handleLogin(response.data.success);
-  //     history.push("/");  
+  //     history.push("/");
   //   } catch {
   //     setError("Failed to log in");
   //   }
   //   setLoading(false);
-  // }    
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    handleLogin(emailRef.current.value, passwordRef.current.value);
+  // }
+
+  const handleLogin = () => {
+    axios
+      .post("https://expa-server.onrender.com/getUser", {
+        email: email,
+        password: password,
+      })
+      .then((response) => {
+        console.log(response);
+        if (response.data.message == "Successfully logged in.") {
+          navigate("/login");
+        } else {
+          setError("Incorrect email or password");
+        }
+      })
+      .catch((err) => console.log(err));
   };
 
+  // const handleSubmit = (event) => {
+  //   event.preventDefault();
+  //   handleLogin(emailRef.current.value, passwordRef.current.value);
+  // };
 
   // function handleLogin(e) {
   //   e.preventDefault();
-  
+
   //   const email = emailRef.current.value;
   //   const password = passwordRef.current.value;
-  
+
   //   axios.post("https://agile-server.onrender.com/getUser", { email, password })
   //     .then(response => {
   //       // handle successful login
   //       console.log(response);
-  //       history.push('/'); 
+  //       history.push('/');
   //     })
   //     .catch(error => {
   //       // handle login error
   //       console.log(error);
   //     });
   // }
-  
 
   return (
     <div className="login">
-      <Form className="login-form" onSubmit={handleSubmit}>
+      <Form className="login-form" onSubmit={handleLogin}>
         <h2>عalegny Shokran</h2>
         <h3>Login</h3>
         <Form.Group className="mb-3" controlId="formBasicEmail">
