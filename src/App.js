@@ -22,23 +22,28 @@ import { useState } from "react";
 import axios from "axios";
 
 function App() {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
-
-  const handleLogin = async (email, password) => {
+  const handleLogin = async (e) => {
+    e.preventDefault();
+  
     try {
-      const response = await axios.post(
-        "https://agile-server.onrender.com/getUser",
-        {
-          email,
-          password,
-        }
-      );
-      // Update the login status based on the response
-      setIsLoggedIn(response.data.success);
-    } catch (error) {
-      console.error(error);
+      setError("");
+      setLoading(true);
+      const response = await axios.post("https://agile-server.onrender.com/getUser", {
+        email: emailRef.current.value,
+        password: passwordRef.current.value
+      });
+      if (response.data.success) {
+        history.push("/");
+        console.log(response.data);
+      } else {
+        setError("Failed to log in");
+      }
+    } catch {
+      setError("Failed to log in");
     }
-  };
+  
+    setLoading(false);
+  }
   return (
     <div>
       <Router>

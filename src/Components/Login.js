@@ -32,32 +32,29 @@ const Login = ({handleLogin}) => {
   //   setLoading(false);
   // }
 
-  function handleSubmit() {
-    handleLogin(emailRef.current.value, passwordRef.current.value);
-  }
 
-  function handleLogin(e) {
-    e.preventDefault();
+  // function handleLogin(e) {
+  //   e.preventDefault();
   
-    const email = emailRef.current.value;
-    const password = passwordRef.current.value;
+  //   const email = emailRef.current.value;
+  //   const password = passwordRef.current.value;
   
-    axios.post("https://agile-server.onrender.com/getUser", { email, password })
-      .then(response => {
-        // handle successful login
-        console.log(response);
-        history.push('/'); 
-      })
-      .catch(error => {
-        // handle login error
-        console.log(error);
-      });
-  }
+  //   axios.post("https://agile-server.onrender.com/getUser", { email, password })
+  //     .then(response => {
+  //       // handle successful login
+  //       console.log(response);
+  //       history.push('/'); 
+  //     })
+  //     .catch(error => {
+  //       // handle login error
+  //       console.log(error);
+  //     });
+  // }
   
 
   return (
     <div className="login">
-      <Form className="login-form" onSubmit={handleSubmit}>
+      <Form className="login-form" onSubmit={handleLogin}>
         <h2>عalegny Shokran</h2>
         <h3>Login</h3>
         <Form.Group className="mb-3" controlId="formBasicEmail">
