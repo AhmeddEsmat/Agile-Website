@@ -1,6 +1,6 @@
 import "./Signup.css";
 import { Button, Form, Alert } from "react-bootstrap";
-import { useHistory, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useState, useRef } from "react";
 // import { useAuth } from "../Contexts/AuthContext";
 import Dropdown from "react-bootstrap/Dropdown";
@@ -16,7 +16,6 @@ const Signup = () => {
   // const { signup } = useAuth();
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
-  const history = useHistory();
 
   function handleSignup(e) {
     // alert("Hello");
