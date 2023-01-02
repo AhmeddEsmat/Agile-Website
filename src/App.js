@@ -22,23 +22,7 @@ import { useState } from "react";
 import axios from "axios";
 
 function App() {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
-  const handleLogin = async (email, password) => {
-    try {
-      const response = await axios.post(
-        "https://agile-server.onrender.com/getUser",
-        {
-          email,
-          password,
-        }
-      );
-      // Update the login status based on the response
-      setIsLoggedIn(response.data.success);
-    } catch (error) {
-      console.error(error);
-    }
-  };
   return (
     <div>
       <Router>
@@ -73,7 +57,7 @@ function App() {
           <Route path="/eye">
             {isLoggedIn ? <Eye /> : <Redirect to="/login" />}
           </Route>
-          <Route path="/login" render={() => <Login handleLogin={handleLogin} />} />
+          <Route path="/login" component={Login} />
           <Route path="/signup" component={Signup} />
         </Switch>
       </Router>

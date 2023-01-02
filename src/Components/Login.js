@@ -5,7 +5,7 @@ import { Link, useHistory } from "react-router-dom";
 // import { useAuth } from "../Contexts/AuthContext";
 import axios from "axios";
 
-const Login = ({ handleLogin }) => {
+const Login = () => {
   const emailRef = useRef();
   const passwordRef = useRef();
   // const { login } = useAuth();
@@ -15,7 +15,7 @@ const Login = ({ handleLogin }) => {
 
   // async function handleLogin(e) {
   //   e.preventDefault();
-
+  
   //   try {
   //     setError("");
   //     setLoading(true);
@@ -28,52 +28,33 @@ const Login = ({ handleLogin }) => {
   //   } catch {
   //     setError("Failed to log in");
   //   }
-
+  
   //   setLoading(false);
   // }
 
-  // function handleLogin(e) {
-  //   e.preventDefault();
 
-  //   const email = emailRef.current.value;
-  //   const password = passwordRef.current.value;
-
-  //   axios.post("https://agile-server.onrender.com/getUser", { email, password })
-  //     .then(response => {
-  //       // handle successful login
-  //       console.log(response);
-  //       history.push('/');
-  //     })
-  //     .catch(error => {
-  //       // handle login error
-  //       console.log(error);
-  //     });
-  // }
-
-  const handleFormSubmit = async (e) => {
+  function handleLogin(e) {
     e.preventDefault();
-    try {
-      setError("");
-      setLoading(true);
-      const response = await axios.post(
-        "https://agile-server.onrender.com/getUser",
-        {
-          email: emailRef.current.value,
-          password: passwordRef.current.value,
-        }
-      );
-      // Call the login function passed down as a prop
-      handleLogin(emailRef.current.value, passwordRef.current.value);
-      history.push("/");
-    } catch {
-      setError("Failed to log in");
-    }
-    setLoading(false);
-  };
+  
+    const email = emailRef.current.value;
+    const password = passwordRef.current.value;
+  
+    axios.post("https://agile-server.onrender.com/getUser", { email, password })
+      .then(response => {
+        // handle successful login
+        console.log(response);
+        history.push('/'); 
+      })
+      .catch(error => {
+        // handle login error
+        console.log(error);
+      });
+  }
+  
 
   return (
     <div className="login">
-      <Form className="login-form" onSubmit={handleFormSubmit}>
+      <Form className="login-form" onSubmit={handleLogin}>
         <h2>عalegny Shokran</h2>
         <h3>Login</h3>
         <Form.Group className="mb-3" controlId="formBasicEmail">
