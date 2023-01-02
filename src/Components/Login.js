@@ -32,8 +32,7 @@ const Login = ({handleLogin}) => {
   //   setLoading(false);
   // }
 
-  function handleSubmit(e) {
-    e.preventDefault();
+  function handleSubmit() {
     handleLogin(emailRef.current.value, passwordRef.current.value);
   }
 
@@ -58,7 +57,7 @@ const Login = ({handleLogin}) => {
 
   return (
     <div className="login">
-      <Form className="login-form" onSubmit={(e) => handleSubmit(e)}>
+      <Form className="login-form" onSubmit={handleSubmit}>
         <h2>عalegny Shokran</h2>
         <h3>Login</h3>
         <Form.Group className="mb-3" controlId="formBasicEmail">
