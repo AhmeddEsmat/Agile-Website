@@ -46,18 +46,18 @@ function App() {
   return (
     <div>
       <Routes>
-        <Route path="/" element={Login} />
-        <Route path="/login" element={Home} />
-        <Route path="/services" element={Services} />
-        <Route path="/donate" element={Donate} />
-        <Route path="/creditcard" element={CreditCard} />
-        <Route path="/fawry" element={Fawry} />
-        <Route path="/items" element={Items} />
-        <Route path="/about" element={About} />
-        <Route path="/dental" element={Dental} />
-        <Route path="/mental" element={Mental} />
-        <Route path="/eye" element={Eye} />
-        <Route path="/signup" element={Signup} />
+        <Route path="/" element={<Login/>} />
+        <Route path="/login" element={<Home/>} />
+        <Route path="/services" element={<Services/>} />
+        <Route path="/donate" element={<Donate/>} />
+        <Route path="/creditcard" element={<CreditCard/>} />
+        <Route path="/fawry" element={<Fawry/>} />
+        <Route path="/items" element={<Items/>} />
+        <Route path="/about" element={<About/>} />
+        <Route path="/dental" element={<Dental/>} />
+        <Route path="/mental" element={<Mental/>} />
+        <Route path="/eye" element={<Eye/>} />
+        <Route path="/signup" element={<Signup/>} />
       </Routes>
     </div>
   );
