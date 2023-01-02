@@ -11,7 +11,7 @@ const Navigation = () => {
         <Container className="navbar">
           <Navbar.Brand href="#home">عalegny Shokran</Navbar.Brand>
           <Nav className="nav">
-            <Link to="/">
+            <Link to="/login">
               <Nav.Link href="#home">Home</Nav.Link>
             </Link>
             <Link to="/services">
