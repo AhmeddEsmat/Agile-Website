@@ -6,6 +6,7 @@ import { useState, useRef } from "react";
 import Dropdown from "react-bootstrap/Dropdown";
 import DropdownButton from "react-bootstrap/DropdownButton";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 const Signup = () => {
   const firstNameRef = useRef();
@@ -14,6 +15,7 @@ const Signup = () => {
   const passwordRef = useRef();
   const passwordConfirmRef = useRef();
   // const { signup } = useAuth();
+  const navigate = useNavigate();
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
 
@@ -28,6 +30,7 @@ const Signup = () => {
       })
       .then((response) => {
         console.log(response);
+        navigate("/login");
       })
       .catch((error) => {
         console.log(error);
