@@ -91,7 +91,7 @@ const Login = () => {
 
   return (
     <div className="login">
-      <Form className="login-form" onSubmit={handleLogin}>
+      <Form className="login-form">
         <h2>عalegny Shokran</h2>
         <h3>Login</h3>
         <Form.Group className="mb-3" controlId="formBasicEmail">
@@ -107,7 +107,7 @@ const Login = () => {
             ref={passwordRef}
             required
           />
-          <Button disabled={loading} variant="primary" type="submit">
+          <Button disabled={loading} variant="primary" onClick={handleLogin}>
             Login
           </Button>
           <div className="w-100 text-center mt-2">
