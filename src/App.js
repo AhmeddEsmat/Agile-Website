@@ -20,8 +20,15 @@ import {
 } from "react-router-dom";
 import { useState } from "react";
 import axios from "axios";
+import { useHistory } from "react-router-dom";
 
 function App() {
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
+  const emailRef = React.useRef();
+  const passwordRef = React.useRef();
+  const history = useHistory();
   const handleLogin = async (e) => {
     e.preventDefault();
   
