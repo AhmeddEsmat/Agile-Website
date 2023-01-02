@@ -20,6 +20,7 @@ import {
 } from "react-router-dom";
 import { useState } from "react";
 import axios from "axios";
+import PrivateRoute from "./PrivateRoute";
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -42,36 +43,57 @@ function App() {
     <div>
       <Router>
         <Switch>
-          <Route exact path="/">
-            {isLoggedIn ? <Home /> : <Redirect to="/login" />}
-          </Route>
-          <Route path="/services">
-            {isLoggedIn ? <Services /> : <Redirect to="/login" />}
-          </Route>
-          <Route path="/donate">
-            {isLoggedIn ? <Donate /> : <Redirect to="/login" />}
-          </Route>
-          <Route path="/creditcard">
-            {isLoggedIn ? <CreditCard /> : <Redirect to="/login" />}
-          </Route>
-          <Route path="/fawry">
-            {isLoggedIn ? <Fawry /> : <Redirect to="/login" />}
-          </Route>
-          <Route path="/items">
-            {isLoggedIn ? <Items /> : <Redirect to="/login" />}
-          </Route>
-          <Route path="/about">
-            {isLoggedIn ? <About /> : <Redirect to="/login" />}
-          </Route>
-          <Route path="/dental">
-            {isLoggedIn ? <Dental /> : <Redirect to="/login" />}
-          </Route>
-          <Route path="/mental">
-            {isLoggedIn ? <Mental /> : <Redirect to="/login" />}
-          </Route>
-          <Route path="/eye">
-            {isLoggedIn ? <Eye /> : <Redirect to="/login" />}
-          </Route>
+          <PrivateRoute
+            exact
+            path="/"
+            component={Home}
+            isAuthenticated={isLoggedIn}
+          />
+          <PrivateRoute
+            path="/services"
+            component={Services}
+            isAuthenticated={isLoggedIn}
+          />
+          <PrivateRoute
+            path="/donate"
+            component={Donate}
+            isAuthenticated={isLoggedIn}
+          />
+          <PrivateRoute
+            path="/creditcard"
+            component={CreditCard}
+            isAuthenticated={isLoggedIn}
+          />
+          <PrivateRoute
+            path="/fawry"
+            component={Fawry}
+            isAuthenticated={isLoggedIn}
+          />
+          <PrivateRoute
+            path="/items"
+            component={Items}
+            isAuthenticated={isLoggedIn}
+          />
+          <PrivateRoute
+            path="/about"
+            component={About}
+            isAuthenticated={isLoggedIn}
+          />
+          <PrivateRoute
+            path="/dental"
+            component={Dental}
+            isAuthenticated={isLoggedIn}
+          />
+          <PrivateRoute
+            path="/mental"
+            component={Mental}
+            isAuthenticated={isLoggedIn}
+          />
+          <PrivateRoute
+            path="/eye"
+            component={Eye}
+            isAuthenticated={isLoggedIn}
+          />
           <Route
             path="/login"
             render={() => <Login handleLogin={handleLogin} />}
