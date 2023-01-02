@@ -52,8 +52,8 @@ const Login = () => {
   const handleLogin = () => {
     axios
       .post("https://agile-server.onrender.com/getUser", {
-        email: email,
-        password: password,
+        email: emailRef.current.value,
+        password: passwordRef.current.value,
       })
       .then((response) => {
         console.log(response);
