@@ -31,7 +31,7 @@ function App() {
     try {
       // Send a request to the server to verify the user's email and password
       const response = await axios.post(
-        "https://agile-server.onrender.com/verifyUser",
+        "https://agile-server.onrender.com/getUser",
         {
           email,
           password,
