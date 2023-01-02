@@ -38,7 +38,7 @@ function App() {
         }
       );
       // If the login is successful, update the login status and redirect the user to the home page
-      if (response.data.success) {
+      if (response.data.message == "Successfully logged in.") {
         setIsLoggedIn(true);
         history.push("/");
       } else {
