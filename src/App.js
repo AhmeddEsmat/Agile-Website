@@ -21,10 +21,12 @@ import {
 import { useState } from "react";
 import axios from "axios";
 import PrivateRoute from "./PrivateRoute";
+import { useHistory } from "react-router-dom";
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [error, setError] = useState("");
+  const history = useHistory();
   const handleLogin = async (email, password) => {
     try {
       // Send a request to the server to verify the user's email and password
