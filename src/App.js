@@ -73,7 +73,7 @@ function App() {
           <Route path="/eye">
             {isLoggedIn ? <Eye /> : <Redirect to="/login" />}
           </Route>
-          <Route path="/login" component={Login} />
+          <Route path="/login" render={() => <Login handleLogin={handleLogin} />} />
           <Route path="/signup" component={Signup} />
         </Switch>
       </Router>

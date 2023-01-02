@@ -5,7 +5,7 @@ import { Link, useHistory } from "react-router-dom";
 // import { useAuth } from "../Contexts/AuthContext";
 import axios from "axios";
 
-const Login = () => {
+const Login = ({handleLogin}) => {
   const emailRef = useRef();
   const passwordRef = useRef();
   // const { login } = useAuth();
@@ -32,6 +32,11 @@ const Login = () => {
   //   setLoading(false);
   // }
 
+  function handleSubmit(e) {
+    e.preventDefault();
+    handleLogin(emailRef.current.value, passwordRef.current.value);
+  }
+
   function handleLogin(e) {
     e.preventDefault();
   
@@ -53,7 +58,7 @@ const Login = () => {
 
   return (
     <div className="login">
-      <Form className="login-form" onSubmit={handleLogin}>
+      <Form className="login-form" onSubmit={handleSubmit}>
         <h2>عalegny Shokran</h2>
         <h3>Login</h3>
         <Form.Group className="mb-3" controlId="formBasicEmail">
