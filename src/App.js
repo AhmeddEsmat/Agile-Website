@@ -20,37 +20,25 @@ import {
 } from "react-router-dom";
 import { useState } from "react";
 import axios from "axios";
-import { useHistory } from "react-router-dom";
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [error, setError] = useState("");
-  const [loading, setLoading] = useState(false);
-  const emailRef = React.useRef();
-  const passwordRef = React.useRef();
-  const history = useHistory();
-  const handleLogin = async (e) => {
-    e.preventDefault();
-  
+
+  const handleLogin = async (email, password) => {
     try {
-      setError("");
-      setLoading(true);
-      const response = await axios.post("https://agile-server.onrender.com/getUser", {
-        email: emailRef.current.value,
-        password: passwordRef.current.value
-      });
-      if (response.data.success) {
-        history.push("/");
-        console.log(response.data);
-      } else {
-        setError("Failed to log in");
-      }
-    } catch {
-      setError("Failed to log in");
+      const response = await axios.post(
+        "https://agile-server.onrender.com/getUser",
+        {
+          email,
+          password,
+        }
+      );
+      // Update the login status based on the response
+      setIsLoggedIn(response.data.success);
+    } catch (error) {
+      console.error(error);
     }
-  
-    setLoading(false);
-  }
+  };
   return (
     <div>
       <Router>
