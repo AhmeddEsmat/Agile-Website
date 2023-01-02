@@ -51,7 +51,7 @@ const Login = () => {
 
   const handleLogin = () => {
     axios
-      .post("https://expa-server.onrender.com/getUser", {
+      .post("https://agile-server.onrender.com/getUser", {
         email: email,
         password: password,
       })
