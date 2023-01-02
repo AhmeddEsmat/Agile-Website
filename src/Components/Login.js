@@ -11,7 +11,7 @@ const Login = () => {
   // const { login } = useAuth();
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
-  // const history = useHistory();
+  const history = useHistory();
 
   // async function handleLogin(e) {
   //   e.preventDefault();
@@ -42,6 +42,7 @@ const Login = () => {
       .then(response => {
         // handle successful login
         console.log(response);
+        history.push('/'); 
       })
       .catch(error => {
         // handle login error
