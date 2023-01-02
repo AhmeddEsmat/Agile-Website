@@ -27,28 +27,46 @@ function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [error, setError] = useState("");
   const history = useHistory();
-  const handleLogin = async (email, password) => {
-    try {
-      // Send a request to the server to verify the user's email and password
-      const response = await axios.post(
-        "https://agile-server.onrender.com/getUser",
-        {
-          email: email,
-          password: password,
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const handleLogin = (email,password) => {
+    axios
+      .post("https://expa-server.onrender.com/getAdmin", {
+        email: email,
+        password: password, 
+      })
+      .then((response) => {
+        console.log(response);
+        if (response.data.message == "Successfully logged in.") {
+          history.push("/");
+        } else {
+          setError("Incorrect email or password");
         }
-      );
-      // If the login is successful, update the login status and redirect the user to the home page
-      if (response.data.message == "Successfully logged in.") {
-        setIsLoggedIn(true);
-        history.push("/");
-      } else {
-        // If the login is unsuccessful, show an error message
-        setError("Incorrect email or password");
-      }
-    } catch (error) {
-      console.error(error);
-    }
+      })
+      .catch((err) => console.log(err));
   };
+  // const handleLogin = async (email, password) => {
+  //   try {
+  //     // Send a request to the server to verify the user's email and password
+  //     const response = await axios.post(
+  //       "https://agile-server.onrender.com/getUser",
+  //       {
+  //         email: email,
+  //         password: password,
+  //       }
+  //     );
+  //     // If the login is successful, update the login status and redirect the user to the home page
+  //     if (response.data.message == "Successfully logged in.") {
+  //       setIsLoggedIn(true);
+  //       history.push("/");
+  //     } else {
+  //       // If the login is unsuccessful, show an error message
+  //       setError("Incorrect email or password");
+  //     }
+  //   } catch (error) {
+  //     console.error(error);
+  //   }
+  // };
 
   return (
     <div>
