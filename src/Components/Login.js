@@ -5,7 +5,7 @@ import { Link, useHistory } from "react-router-dom";
 // import { useAuth } from "../Contexts/AuthContext";
 import axios from "axios";
 
-const Login = ({handleLogin }) => {
+const Login = ({handleLogin}) => {
   const emailRef = useRef();
   const passwordRef = useRef();
   // const { login } = useAuth();
@@ -32,22 +32,26 @@ const Login = ({handleLogin }) => {
   //   setLoading(false);
   // }
 
-  const submitLogin = async (e) => {
-    e.preventDefault();
-    try {
-      setError("");
-      setLoading(true);
-      const response = await axios.post("https://agile-server.onrender.com/getUser", {
-        email: emailRef.current.value,
-        password: passwordRef.current.value
-      });
-      handleLogin(response.data.success);
-      history.push("/");
-    } catch {
-      setError("Failed to log in");
-    }
-    setLoading(false);
-  }    
+  // const submitLogin = async (e) => {
+  //   e.preventDefault();
+  //   try {
+  //     setError("");
+  //     setLoading(true);
+  //     const response = await axios.post("https://agile-server.onrender.com/getUser", {
+  //       email: emailRef.current.value,
+  //       password: passwordRef.current.value
+  //     });
+  //     handleLogin(response.data.success);
+  //     history.push("/");  
+  //   } catch {
+  //     setError("Failed to log in");
+  //   }
+  //   setLoading(false);
+  // }    
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    handleLogin(emailRef.current.value, passwordRef.current.value);
+  };
 
 
   // function handleLogin(e) {
@@ -71,7 +75,7 @@ const Login = ({handleLogin }) => {
 
   return (
     <div className="login">
-      <Form className="login-form" onSubmit={submitLogin}>
+      <Form className="login-form" onSubmit={handleSubmit}>
         <h2>عalegny Shokran</h2>
         <h3>Login</h3>
         <Form.Group className="mb-3" controlId="formBasicEmail">

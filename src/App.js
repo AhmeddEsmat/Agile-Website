@@ -24,21 +24,30 @@ import PrivateRoute from "./PrivateRoute";
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [error, setError] = useState("");
   const handleLogin = async (email, password) => {
     try {
+      // Send a request to the server to verify the user's email and password
       const response = await axios.post(
-        "https://agile-server.onrender.com/getUser",
+        "https://agile-server.onrender.com/verifyUser",
         {
           email,
           password,
         }
       );
-      // Update the login status based on the response
-      setIsLoggedIn(response.data.success);
+      // If the login is successful, update the login status and redirect the user to the home page
+      if (response.data.success) {
+        setIsLoggedIn(true);
+        history.push("/");
+      } else {
+        // If the login is unsuccessful, show an error message
+        setError("Incorrect email or password");
+      }
     } catch (error) {
       console.error(error);
     }
   };
+  
   return (
     <div>
       <Router>
