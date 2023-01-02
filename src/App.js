@@ -12,29 +12,27 @@ import Dental from "./Components/Dental";
 import Mental from "./Components/Mental";
 import Eye from "./Components/Eye";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import { AuthProvider } from "./Contexts/AuthContext";
-import PrivateRoute from "./PrivateRoute";
+// import { AuthProvider } from "./Contexts/AuthContext";
+// import PrivateRoute from "./PrivateRoute";
 
 function App() {
   return (
     <div>
       <Router>
-        <AuthProvider>
           <Switch>
-            <PrivateRoute exact path="/" component={Home} />
-            <PrivateRoute path="/services" component={Services} />
-            <PrivateRoute path="/donate" component={Donate} />
-            <PrivateRoute path="/creditcard" component={CreditCard} />
-            <PrivateRoute path="/fawry" component={Fawry} />
-            <PrivateRoute path="/items" component={Items} />
-            <PrivateRoute path="/about" component={About} />
-            <PrivateRoute path="/dental" component={Dental} />
-            <PrivateRoute path="/mental" component={Mental} />
-            <PrivateRoute path="/eye" component={Eye} />
+            <Route exact path="/" component={Home} />
+            <Route path="/services" component={Services} />
+            <Route path="/donate" component={Donate} />
+            <Route path="/creditcard" component={CreditCard} />
+            <Route path="/fawry" component={Fawry} />
+            <Route path="/items" component={Items} />
+            <Route path="/about" component={About} />
+            <Route path="/dental" component={Dental} />
+            <Route path="/mental" component={Mental} />
+            <Route path="/eye" component={Eye} />
             <Route path="/login" component={Login} />
             <Route path="/signup" component={Signup} />
           </Switch>
-        </AuthProvider>
       </Router>
     </div>
   );

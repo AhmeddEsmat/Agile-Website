@@ -2,35 +2,53 @@ import "./Login.css";
 import { useRef, useState } from "react";
 import { Button, Form } from "react-bootstrap";
 import { Link, useHistory } from "react-router-dom";
-import { useAuth } from "../Contexts/AuthContext";
+// import { useAuth } from "../Contexts/AuthContext";
 import axios from "axios";
 
 const Login = () => {
   const emailRef = useRef();
   const passwordRef = useRef();
-  const { login } = useAuth();
+  // const { login } = useAuth();
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
-  const history = useHistory();
+  // const history = useHistory();
 
-  async function handleLogin(e) {
+  // async function handleLogin(e) {
+  //   e.preventDefault();
+  
+  //   try {
+  //     setError("");
+  //     setLoading(true);
+  //     const response = await axios.post("https://agile-server.onrender.com/getUser", {
+  //       email: emailRef.current.value,
+  //       password: passwordRef.current.value
+  //     });
+  //     // login(response.data.token, response.data.user);
+  //     history.push("/");
+  //   } catch {
+  //     setError("Failed to log in");
+  //   }
+  
+  //   setLoading(false);
+  // }
+
+  function handleLogin(e) {
     e.preventDefault();
   
-    try {
-      setError("");
-      setLoading(true);
-      const response = await axios.post("https://agile-server.onrender.com/getUser", {
-        email: emailRef.current.value,
-        password: passwordRef.current.value
-      });
-      login(response.data.token, response.data.user);
-      history.push("/");
-    } catch {
-      setError("Failed to log in");
-    }
+    const email = emailRef.current.value;
+    const password = passwordRef.current.value;
   
-    setLoading(false);
+    axios.post("https://agile-server.onrender.com/getUser", { email, password })
+      .then(response => {
+        // handle successful login
+        console.log(response);
+      })
+      .catch(error => {
+        // handle login error
+        console.log(error);
+      });
   }
+  
 
   return (
     <div className="login">

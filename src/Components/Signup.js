@@ -2,7 +2,7 @@ import "./Signup.css";
 import { Button, Form, Alert } from "react-bootstrap";
 import { useHistory, Link } from "react-router-dom";
 import { useState, useRef } from "react";
-import { useAuth } from "../Contexts/AuthContext";
+// import { useAuth } from "../Contexts/AuthContext";
 import Dropdown from "react-bootstrap/Dropdown";
 import DropdownButton from "react-bootstrap/DropdownButton";
 import axios from "axios";
@@ -13,7 +13,7 @@ const Signup = () => {
   const emailRef = useRef();
   const passwordRef = useRef();
   const passwordConfirmRef = useRef();
-  const { signup } = useAuth();
+  // const { signup } = useAuth();
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
   const history = useHistory();
