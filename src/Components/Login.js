@@ -58,7 +58,7 @@ const Login = ({handleLogin}) => {
 
   return (
     <div className="login">
-      <Form className="login-form" onSubmit={handleSubmit}>
+      <Form className="login-form" onSubmit={(e) => handleSubmit(e)}>
         <h2>عalegny Shokran</h2>
         <h3>Login</h3>
         <Form.Group className="mb-3" controlId="formBasicEmail">
